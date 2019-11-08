@@ -26,3 +26,24 @@ adjust css when hamburger menu is used
   border: 1px solid rgb(97, 93, 93);
   color: white !important;
 }
+
+@media only screen and (max-width: 990px) {
+  .nav-item {
+    width: 80%;
+  }
+
+  .searchbar {
+    /* margin-top: 5px; */
+    padding: 3px;
+    width: 80%;
+  }
+
+  .searchInput {
+    width: 60% !important;
+  }
+
+  .searchButton {
+    color: black !important;
+    background-color: #a7b7bf  !important;
+  }
+}

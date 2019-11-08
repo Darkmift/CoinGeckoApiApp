@@ -8,7 +8,7 @@ $('.navbar-nav .nav-link').click(function() {
 $(window).resize(function() {
     windowsize = $(window).width();
     if (windowsize > 990) {
-        $(".nav-link")
+        $(".nav-link,.searchbar")
             .removeClass('nav-item-small bg-dark')
             .css('margin:0;')
     }
@@ -17,7 +17,7 @@ $(window).resize(function() {
 $(".navbar-toggler-icon").click(function() {
     windowsize = $(window).width();
     if (windowsize < 990) {
-        $(".nav-link")
+        $(".nav-link,.searchbar")
             .addClass('nav-item-small bg-dark')
     }
 });

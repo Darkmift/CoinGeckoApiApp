@@ -23,7 +23,7 @@
     </nav>
 
     <!-- links and search -->
-    <nav class="navbar navbar-expand-lg navbar-light row" style="margin:1px;">
+    <nav class="navbar navbar-expand-lg navbar-light row" style="margin-left:2px;">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -40,27 +40,41 @@
             <a class="nav-link" href="#">&nbsp;About</a>
           </li>
         </ul>
+        <form class="form-inline searchbar">
+          <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search</button>
+        </form>
       </div>
-      <form class="form-inline col-xs-12 col-sm-9 col-md-3 row" style="margin-top: 5px;">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </nav>
-    <div class="row">
-      <div class="offset-1 col-11">
 
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input" id="customSwitch1">
-          <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+    </nav>
+
+    <!-- cards with coin info -->
+    <div class="container row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="card-title row">
+              <h5 class="col-9">
+                Card title
+              </h5>
+              <div class="custom-control custom-switch col-3">
+                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1"></label>
+              </div>
+            </div>
+
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
         </div>
 
       </div>
-
     </div>
-
-
-
-
+    <!-- container end -->
   </div>
 
 
