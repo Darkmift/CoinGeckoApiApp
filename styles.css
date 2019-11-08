@@ -1,0 +1,9 @@
+.imgLogo {
+  max-width: 8vw;
+  height: auto;
+}
+
+.nav-item .active {
+  background-color: #0275d8;
+  color: #f7f7f7 !important;
+}
