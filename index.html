@@ -11,39 +11,58 @@
 </head>
 
 <body>
+  <div class="container-fluid">
+    <!-- header brand&logo -->
+    <nav class="navbar justify-content-between bg-light" style="background-color: #E8ECEF;">
+      <h1 class="navbar-text mr-auto" style="font-weight: 300;">
+        Cryptonite
+      </h1>
+      <a class="navbar-brand float-md-right" href="#">
+        <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block" alt="navLogo">
+      </a>
+    </nav>
 
-  <nav class="navbar justify-content-between bg-light" style="background-color: #E8ECEF;">
-    <h1 class="navbar-text mr-auto" style="font-weight: 300;">
-      Cryptonite
-    </h1>
-    <a class="navbar-brand float-md-right" href="#">
-      <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block" alt="navLogo">
-    </a>
-  </nav>
+    <!-- links and search -->
+    <nav class="navbar navbar-expand-lg navbar-light row" style="margin:1px;">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link active" href="#">&nbsp;Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">&nbsp;Live Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">&nbsp;About</a>
+          </li>
+        </ul>
+      </div>
+      <form class="form-inline col-xs-12 col-sm-9 col-md-3 row" style="margin-top: 5px;">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav>
+    <div class="row">
+      <div class="offset-1 col-11">
 
-  <div class="navbar navbar-expand-lg navbar-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Live Reports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-      </ul>
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+        </div>
+
+      </div>
+
     </div>
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+
+
+
+
   </div>
+
 
   <!-- script START -->
   <script src="./Lib/js/jquery-3.3.1.slim.min.js">
