@@ -6,7 +6,7 @@
 }
 
 .imgLogo {
-  max-width: 8vw;
+  max-width: 5vw;
   height: auto;
 }
 
@@ -45,4 +45,22 @@ adjust css when hamburger menu is used
     color: black !important;
     background-color: #a7b7bf !important;
   }
+}
+
+/*
+parallax stuff
+*/
+
+.parallax {
+  /* The image used */
+  background-image: url("./images/logoCrypto.png");
+
+  /* Set a specific height */
+  height: 1000px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
