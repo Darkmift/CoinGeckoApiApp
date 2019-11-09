@@ -20,6 +20,10 @@
   width: 100% !important;
 }
 
+.card{
+  margin:1px;
+}
+
 /* 
 switch button css size
 */
