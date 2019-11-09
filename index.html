@@ -11,87 +11,75 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
-  <div class="container-fluid parallax">
-    <!-- header brand&logo -->
-    <nav class="navbar justify-content-between bg-light col-12"
-      style="background-color: #E8ECEF !important;border-bottom: 2px solid lightgray;">
-      <h1 class="navbar-text mr-auto" style="font-weight: 300;">
-        Cryptonite
-      </h1>
-      <a class="navbar-brand float-md-right" href="#">
-        <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block" alt="navLogo">
-      </a>
-    </nav>
-
-    <div class="container">
-
-      <!-- links and search -->
-      <nav class="navbar navbar-expand-lg navbar-light row"
-        style="margin:2px 0 2px 0;background-color: rgba(255, 255, 255, 0.9) !important;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link active" href="#">&nbsp;Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">&nbsp;Live Reports</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">&nbsp;About</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
-            <span>&nbsp;</span>
-            <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search</button>
-          </form>
-        </div>
-
+<body class="d-flex flex-column">
+  <div id="page-content">
+    <div class="container-fluid parallax">
+      <!-- header brand&logo -->
+      <nav class="navbar justify-content-between bg-light col-12"
+        style="background-color: #E8ECEF !important;border-bottom: 2px solid lightgray;">
+        <h1 class="navbar-text mr-auto" style="font-weight: 300;">
+          Cryptonite
+        </h1>
+        <a class="navbar-brand float-md-right" href="#">
+          <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block" alt="navLogo">
+        </a>
       </nav>
 
-      <!-- cards with coin info container -->
-      <div class="container row" style="margin-left:2px;">
+      <div class="container">
 
-        <!-- card template -->
-        <div class="card-container col-sm-12 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-body row">
-              <div class="card-title col-12 row">
-                <h5 class="col-8" id="crypto_id">
-                  BTC
-                </h5>
-                <!-- switch large  -->
-                <div class="form-group col-1">
-                  <span class="switch">
-                    <input type="checkbox" class="switch" id="crypto_switch">
-                    <label for="crypto_switch"></label>
-                  </span>
-                </div>
-                <!-- switch large END  -->
-              </div>
-              <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;" id="crypto_name">
-                <div class="col-6" style="margin-top:5%;margin-bottom:5%;"> bitcoin</div>
-                <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block"
-                  src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579" alt="crypto_img_small">
-              </div>
-
-              <button class="btn btn-primary card-link" style="margin-left:10px;">More Info</button>
-            </div>
+        <!-- links and search -->
+        <nav class="navbar navbar-expand-lg navbar-light row"
+          style="margin:2px 0 2px 0;background-color: rgba(255, 255, 255, 0.9) !important;">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link active" href="#">&nbsp;Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">&nbsp;Live Reports</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">&nbsp;About</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
+              <span>&nbsp;</span>
+              <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search</button>
+            </form>
           </div>
+
+        </nav>
+
+        <!-- cards with coin info container -->
+        <div class="container row" id="cardContainer" style="margin-left:2px;">
+
+          <!-- loading animation -->
+          <div class="offset-4 col-4 row loader">
+            <button class="col-12 btn btn-block btn-secondary" style="padding:25px;" type="button" disabled>
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              Loading...
+            </button>
+          </div>
+
+          <!-- loading animation end-->
+
         </div>
-        <!-- card template END -->
 
       </div>
+      <!-- container end -->
     </div>
-
-    <!-- container end -->
   </div>
 
+  <footer class="footer py-4 bg-light text-white-50">
+    <div class="container text-center">
+      <small> &copy; ‘Powered by CoinGecko API’</small>
+    </div>
+  </footer>
 
   <!-- script START -->
   <script src="./Lib/js/jquery-3.3.1.slim.min.js">

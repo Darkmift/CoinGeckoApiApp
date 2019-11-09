@@ -1,32 +1,28 @@
-let card = `<div class="card-container col-sm-12 col-md-4 col-lg-4">
+export default function card_render(coinObj) {
+    return `<div class="card-container col-sm-12 col-md-4 col-lg-4">
 <div class="card">
-  <div class="card-body">
-    <div class="card-title justify-content-between row">
-      <h5 class="col-7" id="${coinObj.id}">
-        ${coinObj.symbol.toUpperCase()}
+  <div class="card-body row">
+    <div class="card-title col-12 row">
+      <h5 class="col-8" id="${coinObj.symbol}">
+      ${coinObj.symbol.toUpperCase()}
       </h5>
+      <!-- switch large  -->
       <div class="form-group col-1">
         <span class="switch">
-          <input type="checkbox" class="switch" id="switch_${coinObj.symbol}">
-          <label for="switch_${coinObj.symbol}"></label>
+          <input type="checkbox" class="switch monitor" id="monitor_${coinObj.id}">
+          <label for="monitor_${coinObj.id}"></label>
         </span>
       </div>
-      <div class="col-1">&nbsp;</div>
+      <!-- switch large END  -->
     </div>
-    <p class="card-text">${coinObj.name}</p>
-    <button class="btn btn-primary card-link">More Info</button>
+    <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;">
+      <div class="col-md-12 col-lg-6" style="margin-top:5%;margin-bottom:5%;">${coinObj.name}</div>
+      <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block"
+        src="${coinObj.image.small}" alt="${coinObj.id}_img_small">
+    </div>
+
+    <button class="btn btn-primary card-link info" id="info_${coinObj.id}" style="margin-left:10px;">More Info</button>
   </div>
 </div>
 </div>`;
-
-function card_render(coinObj) {
-    let container = $('<div>', { class: 'card-container col-sm-12 col-md-4 col-lg-4' });
-    let card = $('<div>', { class: 'card' });
-    let card_body = $('<div>', { class: 'card-body' });
-    let card_title = $('<div>', { class: 'card-title justify-content-between row' });
-    let coin_title = $('<h5>', {
-        class: 'col-7',
-        id: coinObj.id
-    });
-
 }

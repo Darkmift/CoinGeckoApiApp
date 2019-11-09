@@ -49,6 +49,13 @@ adjust css when hamburger menu is used
   color: white !important;
 }
 
+.loader {
+  z-index: 10;
+  padding: 25px;
+  margin-top: 25%;
+  opacity: 0.9;
+}
+
 @media only screen and (max-width: 990px) {
   .nav-item {
     width: 80%;
@@ -87,4 +94,13 @@ parallax stuff
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  color:black!important;
+  width: 100%;
+  padding: 12.5px !important;
+  border-top: 1px solid lightgray;
 }
