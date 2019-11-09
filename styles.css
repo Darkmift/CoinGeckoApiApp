@@ -20,11 +20,21 @@
   width: 100% !important;
 }
 
-.card-container{
-  padding:0px!important;
+.card-container {
+  padding: 0px !important;
 }
-.card{
-  margin:2px;
+
+.card {
+  margin: 2px;
+}
+
+/*
+*fix alignment of coin  name vs image
+*/
+.coin_name {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
 }
 
 /* 
@@ -53,6 +63,13 @@ adjust css when hamburger menu is used
     background-color: #a7b7bf !important;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .hideonsmall {
+    display: none;
+  }
+}
+
 
 /*
 parallax stuff
