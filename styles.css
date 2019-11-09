@@ -20,8 +20,11 @@
   width: 100% !important;
 }
 
+.card-container{
+  padding:0px!important;
+}
 .card{
-  margin:1px;
+  margin:2px;
 }
 
 /* 
