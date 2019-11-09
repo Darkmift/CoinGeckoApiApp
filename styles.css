@@ -20,6 +20,19 @@
   width: 100% !important;
 }
 
+/*
+adjust css when hamburger menu is used
+*/
+.nav-item-small {
+  border: 1px solid rgb(97, 93, 93);
+  color: white !important;
+}
+
+.nav-decor {
+  background-color: #E8ECEF !important;
+  border-bottom: 2px solid lightgray;
+}
+
 .card-container {
   padding: 0px !important;
 }
@@ -41,13 +54,7 @@
 switch button css size
 */
 
-/*
-adjust css when hamburger menu is used
-*/
-.nav-item-small {
-  border: 1px solid rgb(97, 93, 93);
-  color: white !important;
-}
+
 
 .loader {
   z-index: 10;
@@ -99,7 +106,7 @@ parallax stuff
 .footer {
   position: fixed;
   bottom: 0;
-  color:black!important;
+  color: black !important;
   width: 100%;
   padding: 12.5px !important;
   border-top: 1px solid lightgray;
