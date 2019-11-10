@@ -11,8 +11,10 @@
 }
 
 .thumb {
+  height: 75px;
   width: 75px;
-  height: auto;
+  object-fit: contain;
+  /* border: 1px solid lightgray; */
 }
 
 .nav-item .active {
@@ -43,12 +45,23 @@ adjust css when hamburger menu is used
 }
 
 .card {
+  display: flex;
   margin: 2px;
+  min-height: 5vw !important;
+  padding-bottom: 40px !important;
+  flex-basis: fit-content;
 }
 
 .card-text-fix {
   width: 100%;
   padding-bottom: 10px;
+}
+
+.card-text-fix img {
+  width: 3vw;
+  height: 3vw;
+  object-fit: contain;
+  /* padding-bottom: 10px; */
 }
 
 /*
@@ -61,15 +74,36 @@ adjust css when hamburger menu is used
 }
 
 /*loader css*/
-.loader {
+.loader button {
   z-index: 10;
-  padding: 25px;
-  margin-top: 25%;
+  /* padding: 12.5px; */
+  /* margin-top: 25%; */
   opacity: 0.9;
 }
 
 .infoPanel {
   margin-top: 5px;
+}
+
+.card-margin-left {
+  /* position: relative; */
+  margin-top: 5px;
+  margin-left: -7px !important;
+  height: auto;
+  /* min-height: 5vw !important; */
+}
+
+.card-margin-left .loader {
+  padding: 25px;
+  /* margin-top: 25%; */
+}
+
+.pricesUl {
+  margin-top: 0 !important;
+}
+
+.pricesUl li .price {
+  color: #5cb85c;
 }
 
 @media only screen and (max-width: 990px) {

@@ -8,7 +8,7 @@ export default function card_render(coinObj) {
     let cardContainer =
         makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4' });
     let card = makeElement('div', { class: 'card' });
-    let cardBody = makeElement('div', { class: 'card-body row' });
+    let cardBody = makeElement('div', { class: 'card-body d-flex flex-column' });
     //title elements
     let cardTitleContainer = makeElement('div', { class: 'card-title col-12 row' });
     let title = makeElement('h5', { class: 'col-8', id: id, text: symbol.toUpperCase() });
@@ -47,10 +47,8 @@ export default function card_render(coinObj) {
     });
 
     cardButton.click(function(e) {
-        // e.preventDefault();
-        collapseOnClick($(this))
-        console.log($(this).attr('aria-controls'));
         const id = $(this).attr('data-id');
+        $(`#collapse${id} .loader`).show();
         const coinDataUrl = `https://api.coingecko.com/api/v3/coins/${id}`
         fetch(coinDataUrl)
             .then(res => res.json())
@@ -60,7 +58,8 @@ export default function card_render(coinObj) {
                     .then(res => res.json())
                     .then(exchangeData => {
                         //more_info_render
-                        return $(`#collapse${coinData.id}`).html(more_info_render(coinData, exchangeData))
+                        $(`#collapse${id} .loader`).hide();
+                        return $(`#collapse${coinData.id}`).append(more_info_render(coinData, exchangeData))
                             // console.log("TCL: defaultfunctioncard_render -> more_info_render(coinData, exchangeData)", more_info_render(coinData, exchangeData))
                     })
             })
@@ -68,13 +67,14 @@ export default function card_render(coinObj) {
 
     //collpase group elements
     let collapse =
-        makeElement('div', { class: 'collapse infoPanel col-12 row', id: `collapse${id}` });
-    let loaderContainer = makeElement('div', { class: 'row loader' });
+        makeElement('div', { class: 'collapse infoPanel card-margin-left col-12 row', id: `collapse${id}` });
+    let loaderContainer = makeElement('div', { class: 'card-body row loader' });
     let loaderButton =
         makeElement('div', {
             class: 'col-12 btn btn-block btn-secondary',
             type: 'button',
-            disabled: 'disabled'
+            disabled: 'disabled',
+            text: 'fetching data '
         });
     let spanLoader = makeElement('span', {
         class: 'spinner-border spinner-border-sm',
