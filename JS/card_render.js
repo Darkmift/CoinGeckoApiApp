@@ -1,10 +1,12 @@
+import more_info_render from './more_info_render.js'
+
 export default function card_render(coinObj) {
 
     const { id, name, symbol } = coinObj;
     const imageUrl = coinObj.image.small;
 
     let cardContainer =
-        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4'});
+        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4' });
     let card = makeElement('div', { class: 'card' });
     let cardBody = makeElement('div', { class: 'card-body row' });
     //title elements
@@ -13,7 +15,7 @@ export default function card_render(coinObj) {
     //switch group elements--also nested in title
     let switchContainer = makeElement('div', { class: 'form-group col-1' });
     let spanSwitch = makeElement('span', { class: 'switch' });
-    let switchInput = makeElement('input', { class: 'switch', id: `monitor${id}`,type:'checkbox' });
+    let switchInput = makeElement('input', { class: 'switch', id: `monitor${id}`, type: 'checkbox' });
     let switchLabel = makeElement('label', { for: `monitor${id}` })
 
     //cardTitle stiching
@@ -35,6 +37,7 @@ export default function card_render(coinObj) {
     let cardButton = makeElement('button', {
         class: 'btn btn-primary card-link info',
         'data-toggle': 'collapse',
+        'data-id': `${id}`,
         'data-target': `#collapse${id}`,
         'aria-expanded': "false",
         'aria-controls': `collapse${id}`,
@@ -46,7 +49,21 @@ export default function card_render(coinObj) {
     cardButton.click(function(e) {
         // e.preventDefault();
         collapseOnClick($(this))
-        console.log($(this).attr('data-target'));
+        console.log($(this).attr('aria-controls'));
+        const id = $(this).attr('data-id');
+        const coinDataUrl = `https://api.coingecko.com/api/v3/coins/${id}`
+        fetch(coinDataUrl)
+            .then(res => res.json())
+            .then(coinData => {
+                const exchangeRatesUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${coinData.id}&vs_currencies=USD%2CEUR%2CILS`;
+                fetch(exchangeRatesUrl)
+                    .then(res => res.json())
+                    .then(exchangeData => {
+                        //more_info_render
+                        return $(`#collpase${coinData.id}`).html(more_info_render(coinData, exchangeData))
+                            // console.log("TCL: defaultfunctioncard_render -> more_info_render(coinData, exchangeData)", more_info_render(coinData, exchangeData))
+                    })
+            })
     });
 
     //collpase group elements
