@@ -1,4 +1,5 @@
 import card_render from './JS/card_render.js'
+import more_info_render from './JS/more_info_render.js'
 
 //toggle active css
 $('.navbar-nav .nav-link').click(function() {
@@ -6,7 +7,8 @@ $('.navbar-nav .nav-link').click(function() {
     $(this).addClass('active');
 })
 
-//fix css for hamburger menu
+/*fix css for hamburger menu
+ */
 $(window).resize(function() {
     if ($(window).width() > 990) {
         $(".nav-link,.searchbar")
@@ -21,9 +23,8 @@ $(".navbar-toggler-icon").click(function() {
             .addClass('nav-item-small bg-dark')
     }
 });
-//fix css for hamburger menu -end
-
-
+/*
+ *fix css for hamburger menu -end*/
 
 //url to fetch all coin data
 const coinListUrl = 'https://api.coingecko.com/api/v3/coins';
@@ -32,19 +33,13 @@ fetch(coinListUrl)
     .then((resp) => resp.json())
     .then(function(data) {
         //populate cardContainer with cards
-        let cardContainer = $('#cardContainer');
         $.each(data, function(index, coinObj) {
-            console.log("TCL: coinObj", coinObj)
-            $($('#cardContainer')).append(card_render(coinObj));
+            let card = card_render(coinObj);
+            $('#cardContainer')
+                .append(card);
         });
         $('.loader').hide();
     })
     .catch(function(error) {
-        console.log(JSON.stringify(error));
+        console.log(error);
     });
-
-// async function fetchCoinData(url) {
-//     const response = await fetch(url);
-//     let coinData = await response.json();
-//     console.log("TCL: fetchCoinData -> coinData", coinData)
-// }

@@ -10,6 +10,11 @@
   height: auto;
 }
 
+.thumb {
+  width: 75px;
+  height: auto;
+}
+
 .nav-item .active {
   background-color: #0275d8;
   color: #f7f7f7 !important;
@@ -41,6 +46,11 @@ adjust css when hamburger menu is used
   margin: 2px;
 }
 
+.card-text-fix {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
 /*
 *fix alignment of coin  name vs image
 */
@@ -50,17 +60,16 @@ adjust css when hamburger menu is used
   justify-content: center;
 }
 
-/* 
-switch button css size
-*/
-
-
-
+/*loader css*/
 .loader {
   z-index: 10;
   padding: 25px;
   margin-top: 25%;
   opacity: 0.9;
+}
+
+.infoPanel {
+  margin-top: 5px;
 }
 
 @media only screen and (max-width: 990px) {

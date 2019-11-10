@@ -1,44 +1,73 @@
-<!-- <div class="jumbotron">
-    <h1 class="float-left">
-      Cryptonite
-    </h1>
-    <img class="float-right img-responsive" src="./images/logoCrypto.png" alt="logo">
-  </div> -->
+<div class="jumbotron">
+  <h1 class="float-left">
+    Cryptonite
+  </h1>
+  <img class="float-right img-responsive" src="./images/logoCrypto.png" alt="logo">
+</div>
 
 <!-- Image and text -->
-<!-- <nav class="navbar navbar-inverted primary-color">
-    <a class="navbar-brand" href="#">
-      <img src="./images/logoCrypto.png" height="30" class="d-inline-block align-top" alt="mdb logo"> Bootstrap
-    </a>
-  </nav> -->
+<nav class="navbar navbar-inverted primary-color">
+  <a class="navbar-brand" href="#">
+    <img src="./images/logoCrypto.png" height="30" class="d-inline-block align-top" alt="mdb logo"> Bootstrap
+  </a>
+</nav>
 
 <!-- Just an image -->
 
 <!-- card template -->
-<!-- <div class="card-container col-sm-12 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-body row">
-              <div class="card-title col-12 row">
-                <h5 class="col-8" id="crypto_id">
-                  BTC
-                </h5>
+<div class="card-container col-sm-12 col-md-4 col-lg-4">
+  <div class="card">
+    <div class="card-body row">
+      <div class="card-title col-12 row">
+        <h5 class="col-8" id="crypto_id">
+          BTC
+        </h5>
 
-                <div class="form-group col-1">
-                  <span class="switch">
-                    <input type="checkbox" class="switch" id="crypto_switch">
-                    <label for="crypto_switch"></label>
-                  </span>
-                </div>
+        <div class="form-group col-1">
+          <span class="switch">
+            <input type="checkbox" class="switch" id="crypto_switch">
+            <label for="crypto_switch"></label>
+          </span>
+        </div>
 
-              </div>
-              <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;" id="crypto_name">
-                <div class="col-6" style="margin-top:5%;margin-bottom:5%;"> bitcoin</div>
-                <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block"
-                  src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579" alt="crypto_img_small">
-              </div>
+      </div>
+      <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;" id="crypto_name">
+        <div class="col-6" style="margin-top:5%;margin-bottom:5%;"> bitcoin</div>
+        <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block"
+          src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579" alt="crypto_img_small">
+      </div>
 
-              <button class="btn btn-primary card-link" style="margin-left:10px;">More Info</button>
-            </div>
-          </div>
-        </div> -->
+      <button class="btn btn-primary card-link" style="margin-left:10px;">More Info</button>
+    </div>
+  </div>
+</div>
 <!-- card template END -->
+
+<!-- card template 2 w/ more info -->
+<div class="card-container col-sm-12 col-md-4 col-lg-4">
+  <div class="card">
+    <div class="card-body row">
+      <div class="card-title col-12 row">
+        <h5 class="col-8" id="${coinObj.symbol}">
+          ${coinObj.symbol.toUpperCase()}
+        </h5>
+        <!-- switch large  -->
+        <div class="form-group col-1">
+          <span class="switch">
+            <input type="checkbox" class="switch monitor" id="monitor_${coinObj.id}">
+            <label for="monitor_${coinObj.id}"></label>
+          </span>
+        </div>
+        <!-- switch large END  -->
+      </div>
+      <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;">
+        <div class="col-md-12 col-lg-6" style="margin-top:5%;margin-bottom:5%;">${coinObj.name}</div>
+        <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block" src="${coinObj.image.small}"
+          alt="${coinObj.id}_img_small">
+      </div>
+
+      <button class="btn btn-primary card-link info" id="info_${coinObj.id}" style="margin-left:10px;">More
+        Info</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cryptonite</title>
+    <link rel="stylesheet" href="./Lib/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/switch.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="d-flex flex-column">
+
+    <!-- TEST -->
+    <div class="card-container col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+            <div class="card-body row">
+
+                <!-- card-title -->
+                <div class="card-title col-12 row">
+                    <h5 class="col-8" id="btc">
+                        BTC
+                    </h5>
+                    <!-- switch large  -->
+                    <div class="form-group col-1">
+                        <span class="switch">
+                            <input type="checkbox" class="switch monitor" id="monitor_bitcoin">
+                            <label for="monitor_bitcoin"></label>
+                        </span>
+                    </div>
+                    <!-- switch large END  -->
+                </div>
+
+                <!-- card-text -->
+                <div class="card-text col-12 flex-row row" style="width:100%;padding-bottom: 10px;">
+                    <div class="col-md-12 col-lg-6" style="margin-top:5%;margin-bottom:5%;">Bitcoin</div>
+                    <img class="hideonsmall offset-1 col-4 d-sm-none d-lg-block"
+                        src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579"
+                        alt="bitcoin_img_small">
+                </div>
+
+                <!-- button toggle collapse -->
+                <button class="btn btn-primary card-link info" data-toggle="collapse" data-target="#collapse_bitcoin"
+                    aria-expanded="false" aria-controls="collapse_bitcoin" data-crypto-name="bitcoin"
+                    style="margin-left:10px;">
+                    More Info
+                </button>
+                <!-- collapse menu -->
+                <div class="collapse infoPanel col-12" id="collapse_bitcoin">
+                    <div class="card card-body flex-row justify-content-center">
+                        <img class="img-thumbnail thumb col-4"
+                            src="https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579"
+                            alt="bitcoin_img_thumbnail">
+                        <ul class="offset-1 col-6" style="margin-top:10px;list-style: none;">
+                            <li>
+                                <span>USD:$8796.25</span>
+                            </li>
+                            <li>
+                                <span>EUR:₠7982.85</span>
+                            </li>
+                            <li>
+                                <span>ILS:₪8796.25</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- TESTEND -->
+
+    <!-- script START -->
+    <script src="./Lib/js/jquery-3.3.1.slim.min.js">
+    </script>
+    <script src="./Lib/js/popper.min.js">
+    </script>
+    <script src="./Lib/js/bootstrap/bootstrap.min.js">
+    </script>
+    <script src="index.js" type="module"></script>
+    <!-- script END -->
+</body>
+
+</html>
