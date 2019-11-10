@@ -18,6 +18,18 @@ export default function card_render(coinObj) {
     let switchInput = makeElement('input', { class: 'switch', id: `monitor${id}`, type: 'checkbox', 'data-switch-track': coinObj.symbol });
     let switchLabel = makeElement('label', { for: `monitor${id}` })
 
+
+    $(switchInput).bind('change', function(e) {
+        if (this.checked && $('[data-switch-track]:checked').length > 5) {
+            $(this).prop("checked", false);
+            $("#limit-alert")
+                .show()
+                .delay(1500)
+                .fadeOut("slow");
+            console.log('too many!limit is 5');
+        }
+    });
+
     //cardTitle stiching
     $(spanSwitch)
         .append([$(switchInput), $(switchLabel)]);

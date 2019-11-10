@@ -3,6 +3,13 @@ import init_Display from './JS/init_Display.js'
 
 $(document).ready(function() {
 
+    //5 limit alert hide
+    $("#limit-alert").hide();
+    // $("#limit-alert").show(0).delay(2000).hide(0);
+    // $("#limit-alert").show().delay(5000).queue(function(next) {
+    //     $(this).hide('slow');
+    //     next();
+    // });
     //fetch all card data
     init_Display();
 
@@ -31,9 +38,11 @@ $(document).ready(function() {
     /*
      *fix css for hamburger menu -end*/
 
+    //search bar functionality
     $(".searchButton").on("click", e => filterSearch());
     $(".searchInput").on("click touchend mouseup mousedown keypress  paste keyup change blur", e => filterSearch());
 
+    //show tracked/checked cards
     $('#tracked_coins').click(function() {
         if (this.checked) {
             const tracked = $('[data-switch-track]:checked');
@@ -45,6 +54,7 @@ $(document).ready(function() {
             $('.card-container').show()
         }
     });
+
 });
 
 function filterSearch() {

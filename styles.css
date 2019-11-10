@@ -1,3 +1,8 @@
+.alert {
+  z-index: 20;
+  opacity: 0.95;
+}
+
 .container-fluid {
   padding-right: 0;
   padding-left: 0;
