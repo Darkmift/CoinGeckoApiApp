@@ -14,7 +14,7 @@ $(window).resize(function() {
         $(".nav-link,.searchbar")
             .removeClass('nav-item-small bg-dark')
             .css('margin:0;');
-    } 
+    }
 });
 
 $(".navbar-toggler-icon").click(function() {
@@ -43,3 +43,20 @@ fetch(coinListUrl)
     .catch(function(error) {
         console.log(error);
     });
+
+$(document).ready(function() {
+    $(".searchButton").on("click", e => filterSearch());
+    $(".searchInput").on("click touchend mouseup mousedown keypress  paste keyup change blur", e => filterSearch());
+
+});
+
+function filterSearch() {
+    if ($('.searchInput').val().length) {
+        var value = $('.searchInput').val().toLowerCase();
+        $("[data-search-target]").filter(function() {
+            $(this).toggle($(this).attr('data-search-target').toLowerCase().toLowerCase().indexOf(value) > -1)
+        });
+        return;
+    }
+    $("[data-search-target]").show();
+}

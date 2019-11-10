@@ -6,12 +6,12 @@ export default function card_render(coinObj) {
     const imageUrl = coinObj.image.small;
 
     let cardContainer =
-        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4' });
+        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4', 'data-search-target': coinObj.symbol });
     let card = makeElement('div', { class: 'card' });
     let cardBody = makeElement('div', { class: 'card-body d-flex flex-column' });
     //title elements
     let cardTitleContainer = makeElement('div', { class: 'card-title col-12 row' });
-    let title = makeElement('h5', { class: 'col-8', id: id, text: symbol.toUpperCase() });
+    let title = makeElement('h5', { class: 'col-8', 'data-search-key': symbol, text: symbol.toUpperCase() });
     //switch group elements--also nested in title
     let switchContainer = makeElement('div', { class: 'form-group col-1' });
     let spanSwitch = makeElement('span', { class: 'switch' });
@@ -28,8 +28,8 @@ export default function card_render(coinObj) {
 
     //card-text elements
     let cardText = makeElement('div', { class: 'card-text col-12 flex-row row card-text-fix' });
-    let coinName = makeElement('div', { class: 'col-md-12 col-lg-6', style: 'margin-top:5%;margin-bottom:5%;', text: name });
-    let coinImage = makeElement('img', { class: 'hideonsmall offset-1 col-4 d-sm-none d-lg-block', src: imageUrl, alt: `image of ${name}` });
+    let coinName = makeElement('div', { class: 'col-md-12 col-lg-8', style: 'margin-top:5%;margin-bottom:5%;', text: name });
+    let coinImage = makeElement('img', { class: 'hideonsmall offset-1 col-3 d-sm-none d-lg-block', src: imageUrl, alt: `image of ${name}` });
 
     //card text stiching
     $(cardText).append([$(coinName), $(coinImage)]);
@@ -48,23 +48,27 @@ export default function card_render(coinObj) {
 
     cardButton.click(function(e) {
         const id = $(this).attr('data-id');
-        $(`#collapse${id} .loader`).show();
-        const coinDataUrl = `https://api.coingecko.com/api/v3/coins/${id}`
-        fetch(coinDataUrl)
-            .then(res => res.json())
-            .then(coinData => {
-                const exchangeRatesUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${coinData.id}&vs_currencies=USD%2CEUR%2CILS`;
-                fetch(exchangeRatesUrl)
-                    .then(res => res.json())
-                    .then(exchangeData => {
-                        //more_info_render
-                        $(`#collapse${id} .loader`).hide();
-                        if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
-                            $('.card-exists').remove();
-                        }
-                        return $(`#collapse${coinData.id}`).append(more_info_render(coinData, exchangeData))
-                    })
-            })
+        if ($(`#collapse${id}`).find('.card-exists').length === 0) {
+
+            $(`#collapse${id} .loader`).show();
+            const coinDataUrl = `https://api.coingecko.com/api/v3/coins/${id}`
+            fetch(coinDataUrl)
+                .then(res => res.json())
+                .then(coinData => {
+                    const exchangeRatesUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${coinData.id}&vs_currencies=USD%2CEUR%2CILS`;
+                    fetch(exchangeRatesUrl)
+                        .then(res => res.json())
+                        .then(exchangeData => {
+                            //more_info_render
+                            $(`#collapse${id} .loader`).hide();
+                            if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
+                                $('.card-exists').remove();
+                            }
+                            return $(`#collapse${coinData.id}`).append(more_info_render(coinData, exchangeData))
+                        })
+                })
+        }
+
     });
 
     //collpase group elements
