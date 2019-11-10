@@ -74,3 +74,23 @@ export default function card_render(coinObj) {
   </div>
 </div>`;
 }
+
+function collapseOnClick(collapseTrigger) {
+    /**
+     * Manually add collapse on click event.
+     * 
+     * Because dynamically added Bootstrap collapse elements don't
+     * work automatically for me most of the time.
+     * 
+     * 'data-target' is a selector for the collapsing element as per
+     * the Bootstrap documentation. 
+     * https://getbootstrap.com/docs/4.3/components/collapse/#via-data-attributes
+     *
+     * @param {jQuery} collapseTrigger Trigger element for the collapse.
+     * 
+     */
+    var target = collapseTrigger.attr("data-target")
+    collapseTrigger.on('click', function() {
+        $(target).collapse('toggle')
+    })
+}

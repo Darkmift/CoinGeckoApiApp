@@ -47,7 +47,7 @@ adjust css when hamburger menu is used
 .card {
   display: flex;
   margin: 2px;
-  min-height: 5vw !important;
+  /* height: 50vh !important; */
   padding-bottom: 40px !important;
   flex-basis: fit-content;
 }

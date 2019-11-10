@@ -1,5 +1,4 @@
 import card_render from './JS/card_render.js'
-import more_info_render from './JS/more_info_render.js'
 
 //toggle active css
 $('.navbar-nav .nav-link').click(function() {
@@ -48,6 +47,17 @@ $(document).ready(function() {
     $(".searchButton").on("click", e => filterSearch());
     $(".searchInput").on("click touchend mouseup mousedown keypress  paste keyup change blur", e => filterSearch());
 
+    $('#tracked_coins').click(function() {
+        if (this.checked) {
+            const tracked = $('[data-switch-track]:checked');
+            if (tracked.length) {
+                $('.card-container').hide()
+                tracked.closest('.card-container').show();
+            }
+        } else {
+            $('.card-container').show()
+        }
+    });
 });
 
 function filterSearch() {

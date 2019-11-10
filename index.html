@@ -45,6 +45,10 @@
                 <a class="nav-link" href="#">&nbsp;About</a>
               </li>
             </ul>
+            <div class="custom-control custom-switch" style="margin-right:20px;">
+              <input type="checkbox" class="custom-control-input" id="tracked_coins">
+              <label class="custom-control-label" for="tracked_coins">Show tracked</label>
+            </div>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
               <span>&nbsp;</span>
@@ -55,7 +59,7 @@
         </nav>
 
         <!-- cards with coin info container -->
-        <div class="container row" id="cardContainer" style="margin-left:2px;padding-bottom: 5vw;">
+        <div class="container d-flex row" id="cardContainer" style="margin-left:2px;padding-bottom: 20vw;">
 
           <!-- loading animation -->
           <div class="offset-4 col-md-4 col-sm-6 col-lg-4 row loader">
