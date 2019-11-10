@@ -4,7 +4,7 @@ export default function card_render(coinObj) {
     const imageUrl = coinObj.image.small;
 
     let cardContainer =
-        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4' });
+        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4'});
     let card = makeElement('div', { class: 'card' });
     let cardBody = makeElement('div', { class: 'card-body row' });
     //title elements
