@@ -60,7 +60,7 @@ export default function card_render(coinObj) {
                     .then(res => res.json())
                     .then(exchangeData => {
                         //more_info_render
-                        return $(`#collpase${coinData.id}`).html(more_info_render(coinData, exchangeData))
+                        return $(`#collapse${coinData.id}`).html(more_info_render(coinData, exchangeData))
                             // console.log("TCL: defaultfunctioncard_render -> more_info_render(coinData, exchangeData)", more_info_render(coinData, exchangeData))
                     })
             })
@@ -68,7 +68,7 @@ export default function card_render(coinObj) {
 
     //collpase group elements
     let collapse =
-        makeElement('div', { class: 'collapse infoPanel col-12 row', id: `collpase${id}` });
+        makeElement('div', { class: 'collapse infoPanel col-12 row', id: `collapse${id}` });
     let loaderContainer = makeElement('div', { class: 'row loader' });
     let loaderButton =
         makeElement('div', {
