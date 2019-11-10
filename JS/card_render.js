@@ -67,17 +67,12 @@ export default function card_render(coinObj) {
             fetch(coinDataUrl)
                 .then(res => res.json())
                 .then(coinData => {
-                    const exchangeRatesUrl = `https://api.coingecko.com/api/v3/simple/price?ids=${coinData.id}&vs_currencies=USD%2CEUR%2CILS`;
-                    fetch(exchangeRatesUrl)
-                        .then(res => res.json())
-                        .then(exchangeData => {
-                            //more_info_render
-                            $(`#collapse${id} .loader`).hide();
-                            if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
-                                $('.card-exists').remove();
-                            }
-                            return $(`#collapse${coinData.id}`).append(more_info_render(coinData, exchangeData))
-                        })
+                    //more_info_render
+                    $(`#collapse${id} .loader`).hide();
+                    if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
+                        $('.card-exists').remove();
+                    }
+                    return $(`#collapse${coinData.id}`).append(more_info_render(coinData))
                 })
         }
 

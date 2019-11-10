@@ -58,7 +58,7 @@ $(document).ready(function() {
 });
 
 function filterSearch() {
-    if ($('.searchInput').val().length) {
+    if ($('.searchInput').val().length >= 3) {
         var value = $('.searchInput').val().toLowerCase();
         $("[data-search-target]").filter(function() {
             $(this).toggle($(this).attr('data-search-target').toLowerCase().toLowerCase().indexOf(value) > -1)
