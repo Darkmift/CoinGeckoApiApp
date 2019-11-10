@@ -13,7 +13,7 @@ export default function card_render(coinObj) {
     //switch group elements--also nested in title
     let switchContainer = makeElement('div', { class: 'form-group col-1' });
     let spanSwitch = makeElement('span', { class: 'switch' });
-    let switchInput = makeElement('input', { class: `switch monitor${id}` });
+    let switchInput = makeElement('input', { class: 'switch', id: `monitor${id}`,type:'checkbox' });
     let switchLabel = makeElement('label', { for: `monitor${id}` })
 
     //cardTitle stiching
