@@ -59,8 +59,10 @@ export default function card_render(coinObj) {
                     .then(exchangeData => {
                         //more_info_render
                         $(`#collapse${id} .loader`).hide();
+                        if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
+                            $('.card-exists').remove();
+                        }
                         return $(`#collapse${coinData.id}`).append(more_info_render(coinData, exchangeData))
-                            // console.log("TCL: defaultfunctioncard_render -> more_info_render(coinData, exchangeData)", more_info_render(coinData, exchangeData))
                     })
             })
     });

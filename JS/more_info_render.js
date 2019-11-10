@@ -1,7 +1,7 @@
 export default function more_info_render(coinObj, exchangeRates) {
     exchangeRates = exchangeRates[Object.keys(exchangeRates)[0]];
     const coinId = coinObj.id;
-    return `<div class="card d-flex flex-row col-12" style="padding:8px 0 2px 0 !important;">
+    return `<div class="card-exists card d-flex flex-row col-12" style="padding:8px 0 2px 0 !important;">
     <img class="d-none d-lg-block thumb col-md-12 col-lg-4"
       src="${coinObj.image.small}"
       alt="bitcoin_img_thumbnail">
