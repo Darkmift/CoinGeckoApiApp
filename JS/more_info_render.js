@@ -1,5 +1,4 @@
 export default function more_info_render(coinObj) {
-    const coinId = coinObj.id;
     const exchangeRates = coinObj.market_data.current_price;
     return `<div class="card-exists card d-flex flex-row col-12" style="padding:8px 0 2px 0 !important;">
     <img class="d-none d-lg-block thumb col-md-12 col-lg-4"

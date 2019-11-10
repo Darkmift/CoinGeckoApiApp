@@ -5,11 +5,7 @@ $(document).ready(function() {
 
     //5 limit alert hide
     $("#limit-alert").hide();
-    // $("#limit-alert").show(0).delay(2000).hide(0);
-    // $("#limit-alert").show().delay(5000).queue(function(next) {
-    //     $(this).hide('slow');
-    //     next();
-    // });
+
     //fetch all card data
     init_Display();
 
