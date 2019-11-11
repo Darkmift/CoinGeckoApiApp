@@ -1,7 +1,12 @@
-.alert {
-  z-index: 20;
-  opacity: 0.95;
-}
+/* .alert {
+  margin: 0;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:80%;
+  padding:40px;
+} */
 
 .container-fluid {
   padding-right: 0;

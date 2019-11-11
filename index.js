@@ -3,9 +3,6 @@ import init_Display from './JS/init_Display.js'
 
 $(document).ready(function() {
 
-    //5 limit alert hide
-    $("#limit-alert").hide();
-
     //fetch all card data
     init_Display();
 

@@ -44,26 +44,21 @@ export default async function init_Display() {
             //bind switch function
             $(card)
                 .find('[data-switch-track]')
-                .bind('change', function(e) {
+                .bind('change', async function(e) {
                     if (this.checked && $('[data-switch-track]:checked').length > 5) {
                         $(this).prop("checked", false);
-                        $("#limit-alert")
-                            .show()
-                            .delay(1500)
-                            .fadeOut("slow");
+
+                        $('#trackedCoins')
+                            .modal('show')
                         console.log('too many!limit is 5');
                     }
                 });
-
-
 
             $('#cardContainer')
                 .append(card);
         });
 
         $('.loader').hide();
-
-
 
     } catch (err) {
         console.error(err);
