@@ -94,3 +94,40 @@ function collapseOnClick(collapseTrigger) {
         $(target).collapse('toggle')
     })
 }
+
+let old_card_render_snippet = html `<button class="btn btn-primary card-link more-info" data-toggle="collapse" data-id="${id}" data-target="#collapse${id}"
+aria-expanded="false" aria-controls="collapse${id}" style="margin-left:10px;">
+More info
+</button>
+<div class="collapse infoPanel card-margin-left col-12 row" id="old_collapse${id}">
+<div class="card-body row loader">
+    <div class="col-12 btn btn-block btn-secondary" type="button" disabled="disabled">
+        fetching data
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    </div>
+</div>
+</div>`
+
+//init_display
+$(card)
+    .find('.more-info')
+    .bind('click', async function(e) {
+
+        const id = `collapse${$(this).attr('data-id')}`;
+        if ($(`#${id}`).find('.card-exists').length === 0) {
+            $(`#${id} .loader`).show();
+
+            fetch(`https://api.coingecko.com/api/v3/coins/${$(this).attr('data-id')}`)
+                .then(res => res.json())
+                .then(coinData => {
+                    //more_info_render
+                    if ($(`#${id}`).find('.card-exists').length !== 0) {
+                        $('.card-exists').remove();
+                        console.log("TCL: defaultfunctioninit_Display -> id", id)
+                    }
+
+                    $(`#${id}`).append(more_info_render(coinData))
+                    $(`#${id} .loader`).hide();
+                });
+        }
+    });

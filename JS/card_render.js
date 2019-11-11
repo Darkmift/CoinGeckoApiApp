@@ -1,125 +1,57 @@
-import more_info_render from './more_info_render.js'
-
 export default function card_render(coinObj) {
 
-    const { id, name, symbol } = coinObj;
-    const imageUrl = coinObj.image.small;
+    const { symbol, name, id, image } = coinObj;
+    const image_url = image.small;
 
-    let cardContainer =
-        makeElement('div', { class: 'card-container col-sm-12 col-md-4 col-lg-4', 'data-search-target': coinObj.symbol });
-    let card = makeElement('div', { class: 'card' });
-    let cardBody = makeElement('div', { class: 'card-body d-flex flex-column' });
-    //title elements
-    let cardTitleContainer = makeElement('div', { class: 'card-title col-12 row' });
-    let title = makeElement('h5', { class: 'col-8', 'data-search-key': symbol, text: symbol.toUpperCase() });
-    //switch group elements--also nested in title
-    let switchContainer = makeElement('div', { class: 'form-group col-1' });
-    let spanSwitch = makeElement('span', { class: 'switch' });
-    let switchInput = makeElement('input', { class: 'switch', id: `monitor${id}`, type: 'checkbox', 'data-switch-track': coinObj.symbol });
-    let switchLabel = makeElement('label', { for: `monitor${id}` })
+    let card = `
+    <div class="card-container col-sm-12 col-md-6 col-lg-4" data-search-target="${symbol}">
+        <div class="card">
 
+            <div class="card-body d-flex flex-column">
+                <div class="card-title col-12 row">
+                    <h5 class="col-9" data-search-key="${symbol}">${symbol.toUpperCase()}</h5>
+                    <div class="form-group col-1">
+                        <span class="switch">
+                            <input class="switch" id="monitor${id}" type="checkbox" data-switch-track="${symbol}">
+                            <label for="monitor${id}"></label>
+                        </span>
+                    </div>
+                </div>
 
-    $(switchInput).bind('change', function(e) {
-        if (this.checked && $('[data-switch-track]:checked').length > 5) {
-            $(this).prop("checked", false);
-            $("#limit-alert")
-                .show()
-                .delay(1500)
-                .fadeOut("slow");
-            console.log('too many!limit is 5');
-        }
-    });
+                <div class="card-text col-12 flex-row row card-text-fix">
+                    <div class="col-8" style="margin-top:5%;margin-bottom:5%;">${name}</div>
+                    <img class="hideonsmall offset-1 col-3" src="${image_url}" alt="image of ${name}">
+                </div>
 
-    //cardTitle stiching
-    $(spanSwitch)
-        .append([$(switchInput), $(switchLabel)]);
-    $(switchContainer)
-        .append($(spanSwitch));
-    $(cardTitleContainer)
-        .append([$(title), $(switchContainer)]);
+                <div class="card card-decor" >
+                    <h5 class="card-header custom-card-header-decor">
+                        <a class="more-info row justify-content-between" 
+                            data-toggle="collapse" 
+                            data-id="${id}" 
+                            data-target="#collapse${id}"
+                            aria-expanded="false"
+                            aria-controls="collapse${id}"
+                            id="heading-${id}"
+                        style="font-size: 18px;">
+                        <span>More info</span>
+                        <i class="fa fa-chevron-down pull-right" style="margin-top:3px;"></i>
+                        </a>
+                    </h5>
+                    <div class="collapse infoPanel card-margin-left col-12 row" id="collapse${id}" aria-labelledby="heading-${id}">
+                        <!-- loader -->
+                        <div class="card-body row loader">
+                            <div class="col-12 btn btn-block btn-secondary" type="button" disabled="disabled">
+                                fetching data
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                        <!-- loader end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
 
-    //card-text elements
-    let cardText = makeElement('div', { class: 'card-text col-12 flex-row row card-text-fix' });
-    let coinName = makeElement('div', { class: 'col-md-12 col-lg-8', style: 'margin-top:5%;margin-bottom:5%;', text: name });
-    let coinImage = makeElement('img', { class: 'hideonsmall offset-1 col-3 d-sm-none d-lg-block', src: imageUrl, alt: `image of ${name}` });
+    return $(card);
 
-    //card text stiching
-    $(cardText).append([$(coinName), $(coinImage)]);
-
-    let cardButton = makeElement('button', {
-        class: 'btn btn-primary card-link info',
-        'data-toggle': 'collapse',
-        'data-id': `${id}`,
-        'data-target': `#collapse${id}`,
-        'aria-expanded': "false",
-        'aria-controls': `collapse${id}`,
-        'data-crypto-name': `${id}`,
-        'style': "margin-left:10px;",
-        text: `More info`
-    });
-
-    cardButton.click(function(e) {
-        const id = $(this).attr('data-id');
-        if ($(`#collapse${id}`).find('.card-exists').length === 0) {
-
-            $(`#collapse${id} .loader`).show();
-            const coinDataUrl = `https://api.coingecko.com/api/v3/coins/${id}`
-            fetch(coinDataUrl)
-                .then(res => res.json())
-                .then(coinData => {
-                    //more_info_render
-                    $(`#collapse${id} .loader`).hide();
-                    if ($(`#collapse${coinData.id}`).find('.card-exists').length !== 0) {
-                        $('.card-exists').remove();
-                    }
-                    return $(`#collapse${coinData.id}`).append(more_info_render(coinData))
-                })
-        }
-
-    });
-
-    //collpase group elements
-    let collapse =
-        makeElement('div', { class: 'collapse infoPanel card-margin-left col-12 row', id: `collapse${id}` });
-    let loaderContainer = makeElement('div', { class: 'card-body row loader' });
-    let loaderButton =
-        makeElement('div', {
-            class: 'col-12 btn btn-block btn-secondary',
-            type: 'button',
-            disabled: 'disabled',
-            text: 'fetching data '
-        });
-    let spanLoader = makeElement('span', {
-        class: 'spinner-border spinner-border-sm',
-        role: 'status',
-        'aria-hidden': 'true'
-    });
-    //loader stiching
-    $(loaderButton)
-        .append($(spanLoader));
-    $(loaderContainer)
-        .append($(loaderButton));
-    $(collapse)
-        .append($(loaderContainer));
-
-    //put it all together
-    $(cardBody)
-        .append([
-            $(cardTitleContainer),
-            $(cardText),
-            $(cardButton),
-            $(collapse)
-        ]);
-
-    $(card)
-        .append($(cardBody))
-    $(cardContainer)
-        .append($(card))
-
-    return $(cardContainer);
-
-}
-
-function makeElement(type, attrObj) {
-    return $(`<${type}>`, attrObj)
 }
