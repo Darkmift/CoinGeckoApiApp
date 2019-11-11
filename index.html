@@ -27,7 +27,6 @@
       </nav>
 
       <!-- limit 5 only modal -->
-
       <div class="modal fade" id="trackedCoins" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -41,14 +40,8 @@
         </div>
       </div>
 
-
-      <!-- <div class="alert alert-info" role="alert" id="limit-alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-        Only 5 Coins can be tracked
-      </div> -->
-
-      <div class="container">
+      <!-- container start -->
+      <main class="container">
 
         <!-- links and search -->
         <nav class="navbar navbar-expand-lg navbar-light row"
@@ -69,9 +62,12 @@
                 <a class="nav-link" href="#">&nbsp;About</a>
               </li>
             </ul>
-            <div class="custom-control custom-switch" style="margin-right:20px;">
+            <div class="custom-control custom-switch tracked-label" style="margin-right:20px;">
               <input type="checkbox" class="custom-control-input" id="tracked_coins">
-              <label class="custom-control-label" for="tracked_coins">Show tracked</label>
+              <label class="custom-control-label" for="tracked_coins">
+                <span> Show tracked </span>
+                <span>- limit 5</span>
+              </label>
             </div>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
@@ -96,7 +92,7 @@
 
         </div>
 
-      </div>
+      </main>
       <!-- container end -->
     </div>
   </div>
