@@ -1,5 +1,5 @@
-var CACHE_NAME = `CoinGeckoApp_V_${Date.now()}`;
-var cacheFiles = [
+const CACHE_NAME = `CoinGeckoApp_V_${Date.now()}`;
+const cacheFiles = [
     '/',
     '/styles.css',
     '/index.js',
@@ -46,11 +46,34 @@ self.addEventListener('activate', e => {
 });
 
 //intercept fetch events and manage
+// self.addEventListener('fetch', e => {
+//     console.info('fetch event detected', e);
+//     fetch(e.request)
+//         .catch(err => {
+//             console.error('SW failed to aquire connection: ', err)
+//             caches.match(e.request)
+//         });
+// });
+
+//cache whole site
 self.addEventListener('fetch', e => {
-    console.info('fetch event detected', e);
-    fetch(e.request)
+    console.info('fetch event detected:', e.request.url, e.request);
+    e.respondWith(fetch(e.request)
+        .then(res => {
+            //clone response
+            const resClone = res.clone();
+            //open cache and store
+            caches
+                .open(CACHE_NAME)
+                .then(cache => {
+                    cache.put(e.request, resClone)
+                })
+            return res;
+        })
         .catch(err => {
-            console.error('SW failed to aquire connection: ', err)
-            caches.match(e.request)
-        });
+            caches
+                .match(e.request)
+                .then(res => res)
+        })
+    )
 });

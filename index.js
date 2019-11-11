@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
 $(document).ready(function() {
 
     //fetch all card data
-    // init_Display();
+    init_Display();
 
     //toggle active css
     $('.navbar-nav .nav-link').click(function() {
