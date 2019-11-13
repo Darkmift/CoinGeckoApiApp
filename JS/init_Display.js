@@ -22,14 +22,18 @@ export default async function init_Display() {
 
                     //fetch id of collapse elemnt
                     const id = `#collapse${$(this).attr('data-id')}`;
-                    $(id).find('.loader').show();
 
-                    //// accesing indexedDB for data to append to collapse element
-                    const db = new db_handler();
-                    const coinID = $(this).attr('data-id');
-                    db.openDB();
-                    db.getData(id, coinID);
-                    ////
+
+                    if (!$(id).hasClass("show")) {
+
+                        $(id).find('.loader').show();
+                        //// accesing indexedDB for data to append to collapse element
+                        const db = new db_handler();
+                        const coinID = $(this).attr('data-id');
+                        db.openDB();
+                        db.getData(id, coinID);
+                        ////
+                    }
                 });
 
             //bind switch function
