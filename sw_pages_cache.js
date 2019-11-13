@@ -11,12 +11,13 @@ const cacheFiles = [
     './Lib/css/bootstrap/bootstrap.min.css',
     './Lib/css/fontawesome/css/all.css',
     './Lib/js/jquery-3.4.1.min.js',
+    '/Lib/js/dexie.js',
     './Lib/js/bootstrap/bootstrap.bundle.min.js',
 
 ];
 
 self.addEventListener('install', function(e) {
-    console.log('TCL: install event', e)
+    // console.log('TCL: install event', e)
         // Perform install steps
     e.waitUntil(
         caches
@@ -31,13 +32,13 @@ self.addEventListener('install', function(e) {
 });
 
 self.addEventListener('activate', e => {
-    console.log('TCL: activate event', e)
+    // console.log('TCL: activate event', e)
         //clear old caches
     e.waitUntil(caches.keys().then((cacheNames) => {
         return Promise.all(
             cacheNames.map((cacheName) => {
                 if (cacheName != CACHE_NAME) {
-                    console.info('clearing old cache:', cacheName)
+                    // console.info('clearing old cache:', cacheName)
                     return caches.delete(cacheName);
                 }
             })
@@ -57,7 +58,7 @@ self.addEventListener('activate', e => {
 
 //cache whole site
 self.addEventListener('fetch', e => {
-    console.info('fetch event detected:', e.request.url, e.request);
+    // console.info('fetch event detected:', e.request.url, e.request);
     e.respondWith(fetch(e.request)
         .then(res => {
             //clone response

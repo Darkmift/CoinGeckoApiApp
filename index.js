@@ -1,4 +1,5 @@
 import init_Display from './JS/init_Display.js'
+// import db_handler from './JS/db_handler.js'
 
 //set up cache for offline use
 if ('serviceWorker' in navigator) {
@@ -13,7 +14,6 @@ if ('serviceWorker' in navigator) {
 }
 
 $(document).ready(function() {
-
     //fetch all card data
     init_Display();
 

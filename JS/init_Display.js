@@ -1,5 +1,6 @@
 import card_render from './card_render.js'
 import more_info_render from './more_info_render.js'
+import db_handler from './db_handler.js'
 
 export default async function init_Display() {
     //url to fetch all coin data
@@ -21,24 +22,14 @@ export default async function init_Display() {
 
                     //fetch id of collapse elemnt
                     const id = `#collapse${$(this).attr('data-id')}`;
+                    $(id).find('.loader').show();
 
-                    if ($(id).find('.card-exists').length === 0) {
-                        $(id).find('.loader').show();
-                        try {
-                            const response = await fetch(`https://api.coingecko.com/api/v3/coins/${$(this).attr('data-id')}`);
-                            const coinData = await response.json();
-
-                            if ($(id).find('.card-exists').length !== 0) {
-                                $('.card-exists').remove();
-                            }
-
-                            $(id).append(more_info_render(coinData)),
-                                $(id).find('.loader').hide();
-
-                        } catch (error) {
-                            console.log("TCL: defaultfunctioninit_Display -> error", error)
-                        }
-                    }
+                    //// accesing indexedDB for data to append to collapse element
+                    const db = new db_handler();
+                    const coinID = $(this).attr('data-id');
+                    db.openDB();
+                    db.getData(id, coinID);
+                    ////
                 });
 
             //bind switch function

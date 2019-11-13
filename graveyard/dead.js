@@ -131,3 +131,36 @@ $(card)
                 });
         }
     });
+
+//init display->click collpase
+
+try {
+    const response = await fetch(`https://api.coingecko.com/api/v3/coins/${$(this).attr('data-id')}`);
+    const coinData = await response.json();
+
+    if ($(id).find('.card-exists').length !== 0) {
+        $('.card-exists').remove();
+    }
+
+    $(id).append(more_info_render(coinData)),
+        $(id).find('.loader').hide();
+
+} catch (error) {
+    console.log("TCL: defaultfunctioninit_Display -> error", error)
+}
+
+//db_handler ->method in class
+
+// addData(coinID) {
+//     this._db[this._objectStoreTitle]
+//         .add({
+//             id: coinID,
+//             timeStamp: Date.now()
+//         }, coinID.id)
+//         .then(coinID => { console.info('coinInfo:', coinID) })
+//         .catch(err => {
+//             console.info('error adding key:', err.message, err)
+//             this.setData(coinID);
+
+//         })
+// }
