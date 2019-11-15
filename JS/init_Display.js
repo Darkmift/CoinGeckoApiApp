@@ -62,6 +62,7 @@ export default async function init_Display() {
                                     $(awaitedtrackCard).find(`#track_monitor${id}`).bind('change', function(e) {
                                         console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
                                         $(`#monitor${id}`).prop('checked', $(e.target).prop('checked'));
+                                        $(e.target).prop('checked') ? $('#reportsLink').show() : $('#reportsLink').hide();
                                     });
 
                                     resolve(awaitedtrackCard)
@@ -87,6 +88,8 @@ export default async function init_Display() {
                     } else if ($(this).is(':checked') && $('[data-switch-track]:checked').length > 5) {
                         $(this).prop('checked', false);
                         alert('only 5 can be tracked');
+                        $('#trackedCoinsModal')
+                            .modal('show');
                     }
                 });
 

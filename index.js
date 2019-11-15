@@ -70,14 +70,12 @@ $(document).ready(function() {
     });
 
     $('#reportsLink').click(e => {
-        if ($('#tracked_content [data-switch-track]:checked').length < 5) {
+        if ($('#tracked_content [data-switch-id]:checked').length < 5) {
             alert('please select 5 coins to track');
         } else {
             //go to reports
         }
-    })
-
-
+    });
 
 });
 
