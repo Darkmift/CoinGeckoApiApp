@@ -5,6 +5,11 @@
   margin-left: auto
 }
 
+
+.hide-this {
+  display: none !important;
+}
+
 .imgLogo {
   max-width: 75px;
   height: auto;

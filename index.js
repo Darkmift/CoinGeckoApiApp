@@ -61,9 +61,10 @@ $(document).ready(function() {
 
     //live reports click on navbar opens modal if has 5
     $('#modalLink').click(e => {
-        if ($('#tracked_content [data-switch-track]:checked').length < 5) {
+        if ($('[data-switch-track]:checked').length < 5) {
             alert('please select 5 coins to track');
         } else {
+            $('#reportsLink').show();
             $('#trackedCoinsModal')
                 .modal('show');
         }
@@ -71,11 +72,18 @@ $(document).ready(function() {
 
     $('#reportsLink').click(e => {
         if ($('#tracked_content [data-switch-id]:checked').length < 5) {
-            alert('please select 5 coins to track');
-        } else {
-            //go to reports
+            return alert('please select 5 coins to track');
         }
+        //go to reports
+        console.log('dafuq')
+        $('#cardContainer').addClass('hide-this');
     });
+
+
+    $('#trackedCoinsModal [data-dismiss]').click(e => {
+        $('#cardContainer').removeClass('hide-this');
+    })
+
 
 });
 
