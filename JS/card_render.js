@@ -12,7 +12,7 @@ export default function card_render(coinObj) {
                     <h5 class="col-9" data-search-key="${symbol}">${symbol.toUpperCase()}</h5>
                     <div class="form-group col-1">
                         <span class="switch">
-                            <input class="switch" id="monitor${id}" type="checkbox" data-switch-track="${symbol}">
+                            <input class="switch" id="monitor${id}" type="checkbox" data-switch-track="${symbol}" data-switch-id="${id}">
                             <label for="monitor${id}"></label>
                         </span>
                     </div>
