@@ -59,16 +59,25 @@ $(document).ready(function() {
         }
     });
 
-    $('#reportsLink').click(e => {
-        console.log("TCL:        $('#tracked_content')", $('#tracked_content'))
-        console.log("TCL:        $('#tracked_content').is('empty')", $('#tracked_content').is('empty'))
+    //live reports click on navbar opens modal if has 5
+    $('#modalLink').click(e => {
         if ($('#tracked_content [data-switch-track]:checked').length < 5) {
             alert('please select 5 coins to track');
         } else {
             $('#trackedCoinsModal')
                 .modal('show');
         }
+    });
+
+    $('#reportsLink').click(e => {
+        if ($('#tracked_content [data-switch-track]:checked').length < 5) {
+            alert('please select 5 coins to track');
+        } else {
+            //go to reports
+        }
     })
+
+
 
 });
 

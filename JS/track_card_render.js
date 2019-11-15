@@ -14,11 +14,11 @@ export default function track_card_render(coinObj) {
             src="${image_url}"
             alt="image of  ${name}">
   
-          <h5 class="col-6" id="bitcoin">${symbol.toUpperCase()}</h5>
+          <h5 class="col-6">${symbol.toUpperCase()}</h5>
   
           <div class="form-group col-1" style="margin:5px 0 0 0;">
             <span class="switch">
-              <input class="switch" id="track_monitor${id}" type="checkbox" data-switch-track="${symbol}" data-switch-id="${id}">
+              <input class="switch" id="track_monitor${id}" type="checkbox" data-switch-id="${id}">
               <label for="track_monitor${id}"></label>
             </span>
           </div>

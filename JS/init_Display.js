@@ -39,8 +39,11 @@ export default async function init_Display() {
             //bind switch function
             $(card)
                 .find('[data-switch-track]')
-                .bind('change', async function(e) {
-                    if (this.checked && $('[data-switch-track]:checked').length === 5) {
+                .bind('click', async function(e) {
+
+                    console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
+
+                    if ($(this).is(':checked') && $('[data-switch-track]:checked').length === 5) {
 
                         const elements = [];
                         $('[data-switch-track]:checked').each(async function(index, element) {
@@ -56,9 +59,9 @@ export default async function init_Display() {
                                     const awaitedtrackCard = track_card_render(coinObj);
 
                                     $(awaitedtrackCard).find(`#track_monitor${id}`).prop('checked', true);
-                                    $(awaitedtrackCard).find(`#track_monitor${id}`).bind('click', function(e) {
-                                        const target = $(`[data-switch-id="${id}"]`);
-                                        this.checked ? target.prop('checked', true) : target.prop('checked', false);
+                                    $(awaitedtrackCard).find(`#track_monitor${id}`).bind('change', function(e) {
+                                        console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
+                                        $(`#monitor${id}`).prop('checked', $(e.target).prop('checked'));
                                     });
 
                                     resolve(awaitedtrackCard)
@@ -81,12 +84,9 @@ export default async function init_Display() {
                         $('#trackedCoinsModal')
                             .modal('show');
                         return;
-                    }
-                    if (this.checked && $('[data-switch-track]:checked').length > 5) {
+                    } else if ($(this).is(':checked') && $('[data-switch-track]:checked').length > 5) {
                         $(this).prop('checked', false);
-                        // alert('only 5 can be tracked');
-                        $('#trackedCoinsModal')
-                            .modal('show');
+                        alert('only 5 can be tracked');
                     }
                 });
 
