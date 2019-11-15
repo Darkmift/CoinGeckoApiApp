@@ -34,7 +34,7 @@ export default class Graph_Render {
     }
 
     createUrl() {
-        const coinList = ['BTC', 'ETH', 'NANO'].reduce(function(prevVal, currVal, idx) {
+        const coinList = this.coinIdArray.reduce(function(prevVal, currVal, idx) {
             return idx == 0 ? currVal : prevVal + ', ' + currVal;
         }, '').replace(/\s/g, '');
         return `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${coinList}&tsyms=${this.currencyName}`;
