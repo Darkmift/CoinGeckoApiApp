@@ -18,7 +18,7 @@ export default function track_card_render(coinObj) {
   
           <div class="form-group col-1" style="margin:5px 0 0 0;">
             <span class="switch">
-              <input class="switch" id="track_monitor${id}" type="checkbox" data-switch-id="${id}">
+              <input class="switch" id="track_monitor${id}" type="checkbox" data-switch-id="${symbol.toUpperCase()}">
               <label for="track_monitor${id}"></label>
             </span>
           </div>

@@ -14,7 +14,7 @@ export default class Graph_Render {
         this.options = {
             theme: "light2",
             title: {
-                text: "Live Data"
+                text: `Live Data Exchange Rates: ${currencyName}`
             },
             xValueFormatString: "hh:mm:ss tt",
             data: this.dataSet
@@ -43,7 +43,7 @@ export default class Graph_Render {
     updateData() {
         const self = this;
         const url = self.createUrl();
-        console.log("TCL: Graph_Render -> updateData -> url", url)
+        // console.log("TCL: Graph_Render -> updateData -> url", url)
         $.ajax({
             type: "GET",
             url: url,
@@ -54,7 +54,7 @@ export default class Graph_Render {
     }
 
     addData(data, instance) {
-        console.log(instance.newDataCount)
+        // console.log(instance.newDataCount)
 
         if (instance.newDataCount != 1) {
             //each crypto iteration
@@ -75,8 +75,9 @@ export default class Graph_Render {
     }
 
     renderGraphContainer() {
-        return `<div class="card col-12 row">
+        let element = `<div class="card col-12 row">
         <div class="card-body col-12 d-flex flex-column text-center" id="${this.elemendID}" style="padding:0;height: 30vw;"></div>
         </div>`;
+        return $(element)
     }
 }

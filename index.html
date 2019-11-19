@@ -59,7 +59,8 @@
           <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
-                <a class="nav-link active" href="#">&nbsp;Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" href="#" id="cardContainerShow">&nbsp;Home <span
+                    class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" id="modalLink">&nbsp;Live Reports</a>
@@ -98,6 +99,11 @@
 
         </div>
 
+        <!-- Live reports container -->
+        <div class="container d-flex row hide-this" id="trackedGraphs" style="margin-left:2px;padding-bottom: 20vw;">
+
+        </div>
+
       </main>
       <!-- container end -->
     </div>
@@ -114,6 +120,7 @@
   </script>
   <script src="./Lib/js/bootstrap/bootstrap.bundle.min.js">
   </script>
+  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
   <script src="./Lib/js/dexie.js"></script>
   <script src="./index.js" type="module"></script>
   <!-- script END -->

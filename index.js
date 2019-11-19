@@ -1,5 +1,5 @@
-import init_Display from './JS/init_Display.js'
-// import db_handler from './JS/db_handler.js'
+import init_Display from './JS/init_Display.js';
+import Graph_Render from "./JS/Graph_Render.js";
 
 //set up cache for offline use
 if ('serviceWorker' in navigator) {
@@ -70,19 +70,47 @@ $(document).ready(function() {
         }
     });
 
+    //go to live reports
     $('#reportsLink').click(e => {
+
+        //validate 5 coins were selected
         if ($('#tracked_content [data-switch-id]:checked').length < 5) {
             return alert('please select 5 coins to track');
         }
+
+        //store coin id's for cryptocompare api call
+        let coinList = $.map($('#tracked_content [data-switch-id]:checked'), (element, index) => $(element).attr('data-switch-id'));
+        //store currency for cryptocompare api call
+        let currency = ['USD', 'EUR', 'ILS'];
+
+        //destroy previous instances
+        $('#trackedGraphs').children().remove();
+
+        //render Graph Element
+        $.each(currency, function(index, coinName) {
+            let Graphelement = new Graph_Render(`Graph${coinName}`, coinName, coinList);
+            $('#trackedGraphs').append($(Graphelement.renderGraphContainer()));
+            Graphelement.dataObjBuilder();
+            Graphelement.updateData();
+        });
+
         //go to reports
-        console.log('dafuq')
         $('#cardContainer').addClass('hide-this');
+        $('#trackedCoinsModal')
+            .modal('hide');
+
+        $('#trackedGraphs').removeClass('hide-this');
+
     });
 
-
+    //show main container on modal dismiss
     $('#trackedCoinsModal [data-dismiss]').click(e => {
         $('#cardContainer').removeClass('hide-this');
-    })
+    });
+
+    $('#cardContainerShow').click(e => {
+        $('#cardContainer').removeClass('hide-this');
+    });
 
 
 });
