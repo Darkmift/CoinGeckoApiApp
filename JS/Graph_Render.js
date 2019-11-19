@@ -69,15 +69,18 @@ export default class Graph_Render {
             });
             instance.options.data = instance.dataSet;
         }
+        if ($(`#${instance.elemendID}`).attr('data-version')) {
+            $(`#${instance.elemendID}`).CanvasJSChart(instance.options);
+            setTimeout(() => { instance.updateData() }, 2000)
+        }
 
-        $(`#${instance.elemendID}`).CanvasJSChart(instance.options);
-        setTimeout(() => { instance.updateData() }, 2000)
     }
 
     renderGraphContainer() {
         let element = `<div class="card col-12 row">
-        <div class="card-body col-12 d-flex flex-column text-center" id="${this.elemendID}" style="padding:0;height: 30vw;"></div>
+        <div class="card-body col-12 d-flex flex-column text-center" id="${this.elemendID}" data-version="${Date.now()}" style="padding:0;height: 30vw;"></div>
         </div>`;
+        console.log("TCL: renderGraphContainer -> element", $(element))
         return $(element)
     }
 }
