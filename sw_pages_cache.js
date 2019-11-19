@@ -22,7 +22,7 @@ const cacheFiles = [
 ];
 
 self.addEventListener('install', function(e) {
-    console.log('TCL: install event', e)
+    // console.log('TCL: install event', e)
         // Perform install steps
     e.waitUntil(
         caches
@@ -43,9 +43,9 @@ self.addEventListener('activate', e => {
         .then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    console.log("TCL: CACHE_NAME", CACHE_NAME)
+                    // console.log("TCL: CACHE_NAME", CACHE_NAME)
                     if (cacheName != CACHE_NAME) {
-                        console.info('clearing old cache:', cacheName)
+                        // console.info('clearing old cache:', cacheName)
                         return caches.delete(cacheName);
                     }
                 })
