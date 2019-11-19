@@ -1,0 +1,17 @@
+{
+  "name": "coinGeckApp",
+  "short_name": "coinGeckApp",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#ffe1c4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/logoCrypto-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any"
+    }
+  ]
+}
