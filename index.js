@@ -99,6 +99,10 @@ $(document).ready(function() {
         $('#trackedCoinsModal')
             .modal('hide');
 
+        $('.nav-link').each(function(index, element) {
+            $(element).removeClass('active');
+        });
+
         $('#trackedGraphs').removeClass('hide-this');
 
     });
