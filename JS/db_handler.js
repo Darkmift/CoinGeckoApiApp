@@ -16,6 +16,7 @@ export default class db_handler {
         this._db.version(1).stores({
             [this._objectStoreTitle]: 'id'
         });
+        console.log("TCL: db_handler -> openDB -> this._db", this._db)
     }
 
     //public method called
@@ -26,7 +27,7 @@ export default class db_handler {
 
                 if (coinData) {
                     // console.log('success: ', coinData)
-                        //
+                    //
                     if ((coinData.timeStamp + 300000) < Date.now()) {
                         this.setData(coinID).then((resp) => {
                             // console.log("TCL: db_handler -> getData -> resp", resp);

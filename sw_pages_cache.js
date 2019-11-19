@@ -18,7 +18,7 @@ const cacheFiles = [
 
 self.addEventListener('install', function(e) {
     // console.log('TCL: install event', e)
-        // Perform install steps
+    // Perform install steps
     e.waitUntil(
         caches
         .open(CACHE_NAME)
@@ -29,32 +29,28 @@ self.addEventListener('install', function(e) {
         .then(() => self.skipWaiting())
         .catch(err => console.error('SW installation error: ', err))
     );
+
+    //trigger fetch to save all files
+    fetch(window.location.href)
 });
 
 self.addEventListener('activate', e => {
     // console.log('TCL: activate event', e)
-        //clear old caches
-    e.waitUntil(caches.keys().then((cacheNames) => {
-        return Promise.all(
-            cacheNames.map((cacheName) => {
-                if (cacheName != CACHE_NAME) {
-                    // console.info('clearing old cache:', cacheName)
-                    return caches.delete(cacheName);
-                }
-            })
-        );
-    }));
+    //clear old caches
+    e.waitUntil(caches.keys()
+        .then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    console.log("TCL: CACHE_NAME", CACHE_NAME)
+                    if (cacheName != CACHE_NAME) {
+                        // console.info('clearing old cache:', cacheName)
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
 });
-
-//intercept fetch events and manage
-// self.addEventListener('fetch', e => {
-//     console.info('fetch event detected', e);
-//     fetch(e.request)
-//         .catch(err => {
-//             console.error('SW failed to aquire connection: ', err)
-//             caches.match(e.request)
-//         });
-// });
 
 //cache whole site
 self.addEventListener('fetch', e => {
