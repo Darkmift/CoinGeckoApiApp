@@ -41,7 +41,7 @@ export default async function init_Display() {
                 .find('[data-switch-track]')
                 .bind('click', async function(e) {
 
-                    console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
+                    // console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
 
                     if ($(this).is(':checked') && $('[data-switch-track]:checked').length === 5) {
 
@@ -49,7 +49,7 @@ export default async function init_Display() {
                         $('[data-switch-track]:checked').each(async function(index, element) {
                             // element == th       
                             const id = $(this).attr('data-switch-id');
-                            console.log(id);
+                            // console.log(id);
 
                             const awaitElement = new Promise(async(resolve, reject) => {
                                 try {
@@ -60,7 +60,7 @@ export default async function init_Display() {
 
                                     $(awaitedtrackCard).find(`#track_monitor${id}`).prop('checked', true);
                                     $(awaitedtrackCard).find(`#track_monitor${id}`).bind('change', function(e) {
-                                        console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
+                                        // console.log("TCL: defaultfunctioninit_Display -> $('[data-switch-track]:checked').length", $('[data-switch-track]:checked').length)
                                         $(`#monitor${id}`).prop('checked', $(e.target).prop('checked'));
                                         $(e.target).prop('checked') ? $('#reportsLink').show() : $('#reportsLink').hide();
                                     });
@@ -78,7 +78,7 @@ export default async function init_Display() {
                             const results = await Promise.all(elements);
                             $('#tracked_content').empty();
                             $('#tracked_content').append(results)
-                            console.log("TCL: defaultfunctioninit_Display -> results", results);
+                            // console.log("TCL: defaultfunctioninit_Display -> results", results);
                         } catch (err) {
                             console.error('setData fetch error: ', err);
                         }

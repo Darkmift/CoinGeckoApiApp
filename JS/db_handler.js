@@ -25,26 +25,26 @@ export default class db_handler {
             .get(coinID).then(coinData => {
 
                 if (coinData) {
-                    console.log('success: ', coinData)
+                    // console.log('success: ', coinData)
                         //
                     if ((coinData.timeStamp + 300000) < Date.now()) {
                         this.setData(coinID).then((resp) => {
-                            console.log("TCL: db_handler -> getData -> resp", resp);
-                            console.log("TCL: db_handler -> getData -> request interval more than 5 mins from previous.fetching from network");
+                            // console.log("TCL: db_handler -> getData -> resp", resp);
+                            // console.log("TCL: db_handler -> getData -> request interval more than 5 mins from previous.fetching from network");
                             this._db[this._objectStoreTitle]
                                 .get(coinID).then(coinData => {
-                                    console.log("TCL: db_handler -> getData -> Storing network response to indexedDB");
+                                    // console.log("TCL: db_handler -> getData -> Storing network response to indexedDB");
                                     this.populateElement(coinData)
                                 })
                         })
                     } else {
-                        console.log("TCL: db_handler -> getData -> request interval less than 5 mins from previous.fetching from indexedDB")
+                        // console.log("TCL: db_handler -> getData -> request interval less than 5 mins from previous.fetching from indexedDB")
                         this.populateElement(coinData)
                     }
                 } else {
-                    console.log('no data found.fetching from network...')
+                    // console.log('no data found.fetching from network...')
                     this.setData(coinID).then((resp) => {
-                        console.log("TCL: db_handler -> getData -> no data found->response is coinID:", resp)
+                        // console.log("TCL: db_handler -> getData -> no data found->response is coinID:", resp)
                         this._db[this._objectStoreTitle]
                             .get(coinID).then(coinData => {
                                 this.populateElement(coinData)
@@ -75,7 +75,7 @@ export default class db_handler {
         if ($(elementID).find('.card-exists').length !== 0) {
             $('.card-exists').remove();
         }
-        console.log("TCL: db_handler -> populateElement -> elementID->rendering data to", elementID)
+        // console.log("TCL: db_handler -> populateElement -> elementID->rendering data to", elementID)
         $(elementID).append(more_info_render(coinData)),
 
             $(elementID).find('.loader').hide();
