@@ -2,17 +2,17 @@ import init_Display from './JS/init_Display.js';
 import Graph_Render from './JS/Graph_Render.js';
 
 //set up cache for offline use
-// if ('serviceWorker' in navigator) {
-// 	console.log('service available');
-// 	window.addEventListener('load', () => {
-// 		navigator.serviceWorker
-// 			.register('./sw_pages_cache.js')
-// 			.then((registration) => console.info('🌞 Service worker registration succeeded:', registration))
-// 			.catch((err) => console.error('Service worker registration failed:', err));
-// 	});
-// } else {
-// 	console.log('Service workers are not supported.....😞');
-// }
+if ('serviceWorker' in navigator) {
+	console.log('service available');
+	window.addEventListener('load', () => {
+		navigator.serviceWorker
+			.register('./sw_pages_cache.js')
+			.then((registration) => console.info('🌞 Service worker registration succeeded:', registration))
+			.catch((err) => console.error('Service worker registration failed:', err));
+	});
+} else {
+	console.log('Service workers are not supported.....😞');
+}
 
 $(document).ready(function() {
 	//fetch all card data
