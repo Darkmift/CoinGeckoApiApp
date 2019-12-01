@@ -2,130 +2,142 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Cryptonite</title>
-  <link rel="manifest" href="/manifest.json">
-  <link rel="shortcut icon" href="./images/logoCrypto.ico" type="image/x-icon">
-  <link rel="stylesheet" href="./Lib/css/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="./Lib/css/fontawesome/css/all.css">
-  <link rel="stylesheet" href="./CSS/switch.css">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cryptonite</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="./images/logoCrypto.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./Lib/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="./Lib/css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./CSS/switch.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="d-flex flex-column">
-  <div id="page-content">
-    <div class="container-fluid parallax">
-      <!-- header brand&logo -->
-      <nav class="navbar justify-content-between bg-light col-12 nav-decor">
-        <h1 class="navbar-text mr-auto" style="font-weight: 300;">
-          Cryptonite
-        </h1>
-        <a class="navbar-brand float-md-right" href="#">
-          <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block pull-left"
-            alt="navLogo">
-        </a>
-      </nav>
+    <div id="page-content">
+        <div class="container-fluid parallax">
+            <!-- header brand&logo -->
+            <nav class="navbar justify-content-between bg-light col-12 nav-decor">
+                <h1 class="navbar-text mr-auto" style="font-weight: 300;">
+                    Cryptonite
+                </h1>
+                <a class="navbar-brand float-md-right" href="#">
+                    <img src="./images/logoCrypto.png" class="img-fluid img-thumbnail imgLogo d-none d-md-block pull-left" alt="navLogo">
+                </a>
+            </nav>
 
-      <!-- coin tracker modal -->
-      <div class="modal fade" id="trackedCoinsModal" tabindex="-1" role="dialog" aria-hidden="true"
-        data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Tracked Coins</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <!-- coin tracker modal -->
+            <div class="modal fade" id="trackedCoinsModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Tracked Coins</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+                        </div>
+                        <div class="modal-body row" id="tracked_content"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="reportsLink">Generate Report</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body row" id="tracked_content"></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" id="reportsLink">Generate Report</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-          </div>
+
+            <!-- container start -->
+            <main class="container">
+
+                <!-- links and search -->
+                <nav class="navbar navbar-expand-lg navbar-light row" style="margin:2px 0 2px 0;background-color: rgba(255, 255, 255, 0.9) !important;">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link active" id="cardContainerShow">&nbsp;Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="modalLink">&nbsp;Live Reports</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="aboutMeShow">&nbsp;About</a>
+                            </li>
+                        </ul>
+                        <div class="custom-control custom-switch tracked-label" style="margin-right:20px;">
+                            <input type="checkbox" class="custom-control-input" id="tracked_coins">
+                            <label class="custom-control-label" for="tracked_coins">
+                              <span> Show tracked </span>
+                              <span>- limit 5</span>
+                            </label>
+                        </div>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
+                            <span>&nbsp;</span>
+                            <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search</button>
+                        </form>
+                    </div>
+
+                </nav>
+
+                <!-- cards with coin info container -->
+                <div class="container d-flex row" id="cardContainer" style="margin-left:2px;padding-bottom: 20vw;">
+                    <!-- loading animation -->
+                    <div class="offset-4 col-md-4 col-sm-6 col-lg-4 row loader">
+                        <button class="col-12 btn btn-block btn-secondary" style="padding:25px;" type="button" disabled>
+                          <span class="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"></span>
+                          Loading...
+                        </button>
+                    </div>
+                    <!-- loading animation end-->
+
+                </div>
+
+                <!-- Live reports container -->
+                <div class="container d-flex row hide-this" id="trackedGraphs" style="margin-left:2px;padding-bottom: 20vw;"></div>
+
+                <!-- About container -->
+                <div class="container d-flex row hide-this" id="aboutMe" style="margin:5vw;">
+                    <div class="card offset-1 col-10">
+                        <div class="row no-gutters" style="margin:5px;min-height: 30vw;padding: 1vw;">
+                            <div class="col-md-8">
+                                <img src="https://doc-0s-ac-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/aqk2juttipv1sqqf2agveqjcjdpugb33/1575187200000/12760528990592699694/*/18K2Flj6y8BZIbi15Fzlvj96501g2KxnF" style="height: 100%;" class="card-img" alt="some weirdo waving">
+                            </div>
+                            <div class="col-md-4 align-self-center">
+                                <div class="card-body">
+                                    <h5 class="card-title">This app is made by <a href="https://github.com/Darkmift?tab=repositories" alt="Avi's git profile">Avi.E.oenig</a></h5>
+                                    <p class="card-text">Greetings future people,I am Avi,nice to meet you! this app was made for a school assignemnt(hope I get a decent grade 🙃). You are more than welcome to use this app as you see fit.
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">Repo link:&nbsp;<a style="color:lightblue;" src="https://github.com/Darkmift/CoinGeckoApiApp" alt="repository for this app"></a>Click here</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- container end -->
         </div>
-      </div>
-
-      <!-- container start -->
-      <main class="container">
-
-        <!-- links and search -->
-        <nav class="navbar navbar-expand-lg navbar-light row"
-          style="margin:2px 0 2px 0;background-color: rgba(255, 255, 255, 0.9) !important;">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" style="margin-top: 15px;" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link active" href="#" id="cardContainerShow">&nbsp;Home <span
-                    class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" id="modalLink">&nbsp;Live Reports</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">&nbsp;About</a>
-              </li>
-            </ul>
-            <div class="custom-control custom-switch tracked-label" style="margin-right:20px;">
-              <input type="checkbox" class="custom-control-input" id="tracked_coins">
-              <label class="custom-control-label" for="tracked_coins">
-                <span> Show tracked </span>
-                <span>- limit 5</span>
-              </label>
-            </div>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2 searchInput" type="search" placeholder="Search" aria-label="Search">
-              <span>&nbsp;</span>
-              <button class="btn btn-outline-success my-2 my-sm-0 searchButton" type="submit">Search</button>
-            </form>
-          </div>
-
-        </nav>
-
-        <!-- cards with coin info container -->
-        <div class="container d-flex row" id="cardContainer" style="margin-left:2px;padding-bottom: 20vw;">
-
-          <!-- loading animation -->
-          <div class="offset-4 col-md-4 col-sm-6 col-lg-4 row loader">
-            <button class="col-12 btn btn-block btn-secondary" style="padding:25px;" type="button" disabled>
-              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              Loading...
-            </button>
-          </div>
-          <!-- loading animation end-->
-
-        </div>
-
-        <!-- Live reports container -->
-        <div class="container d-flex row hide-this" id="trackedGraphs" style="margin-left:2px;padding-bottom: 20vw;">
-
-        </div>
-
-      </main>
-      <!-- container end -->
     </div>
-  </div>
 
-  <footer class="footer py-4 bg-light text-white-50">
-    <div class="container text-center">
-      <small> &copy; ‘Powered by CoinGecko API’</small>
-    </div>
-  </footer>
+    <footer class="footer py-4 bg-light text-white-50">
+        <div class="container text-center">
+            <small> &copy; ‘Powered by CoinGecko API’</small>
+        </div>
+    </footer>
 
-  <!-- script START -->
-  <script src="./Lib/js/jquery-3.4.1.min.js">
-  </script>
-  <script src="./Lib/js/bootstrap/bootstrap.bundle.min.js">
-  </script>
-  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-  <script src="./Lib/js/dexie.js"></script>
-  <script src="./index.js" type="module"></script>
-  <!-- script END -->
+    <!-- script START -->
+    <script src="./Lib/js/jquery-3.4.1.min.js">
+    </script>
+    <script src="./Lib/js/bootstrap/bootstrap.bundle.min.js">
+    </script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script src="./Lib/js/dexie.js"></script>
+    <script src="./index.js" type="module"></script>
+    <!-- script END -->
 </body>
 
 </html>
